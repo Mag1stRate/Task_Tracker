@@ -32,6 +32,7 @@ func main(){
 	case 5:
 		Task_alter.ShowAllNotDone()
 	case 6:
+		Task_alter.ShowAllInProgress()
 	case 7:
 		fmt.Println("您确定要退出吗Y/N")
 		var exit rune
