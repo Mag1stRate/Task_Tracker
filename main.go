@@ -26,8 +26,11 @@ func main(){
 	case 2:
 		Task_alter.AddTask()
 	case 3:
+		Task_alter.Alter()
 	case 4:
+		Task_alter.DelTask()
 	case 5:
+		Task_alter.ShowAllNotDone()
 	case 6:
 	case 7:
 		fmt.Println("您确定要退出吗Y/N")

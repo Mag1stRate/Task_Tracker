@@ -4,8 +4,9 @@ import(
 	"os"
 	"TASK_TRACKER/model"
 	"time"
-	"encoding/json"
 	"bufio"
+	"TASK_TRACKER/client"
+	"io"
 )
 
 func AddTask(){
@@ -16,14 +17,30 @@ func AddTask(){
 		return
 	}
 	defer file.Close()
+	reader := bufio.NewReader(file)
+	var alldata []model.Task
+	for{
+		line, err := reader.ReadString('\n')
+		if err == io.EOF{
+			fmt.Println("读取结束")
+			break
+		}
+		var cacheStruct *model.Task
+		cacheStruct = client.UnMarshalStruct(line)
+		alldata = append(alldata, *cacheStruct)
+	}
+	var idTheNew int
+	for i := 0; i < len(alldata); i++{
+		fmt.Println(alldata[i].ID)
+		idTheNew = alldata[i].ID
+	}
 	fmt.Println("\t\t进入到添加任务界面")
 	var id int
 	var tatle string
 	var status = "todo"
 	var now = time.Now()
 	var updatetime = time.Now()
-	fmt.Println("请输入id")
-	fmt.Scanln(&id)
+	id = idTheNew + 1
 	fmt.Println("请输入任务内容")
 	fmt.Scanln(&tatle)
 	tdmodel := model.Task{
@@ -33,10 +50,7 @@ func AddTask(){
 		CreatedAt : now,
 		UpdateAt : updatetime,
 	}
-	data, err := json.Marshal(&tdmodel)
-	if err != nil{
-		fmt.Println("json化失败")
-	}
+	data := client.MarshalStruct(tdmodel)
 	writer := bufio.NewWriter(file)
 	_, err = writer.Write (append(data, '\n'))
 	if err != nil{
