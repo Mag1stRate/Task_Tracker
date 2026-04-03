@@ -35,7 +35,7 @@ func ShowAllNotDone (){
 	}
 	fmt.Println("所有未完成的任务")
 	for i := 0; i < len(alldata); i++{
-		if alldata.Status[i] != "done"{
+		if alldata[i].Status != "done"{
 			fmt.Println(alldata[i].Title)
 		}
 	}

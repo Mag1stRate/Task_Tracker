@@ -35,7 +35,7 @@ func ShowAllInProgress (){
 	}
 	fmt.Println("所有正在进行的任务")
 	for i := 0; i < len(alldata); i++{
-		if alldata.Status[i] == "in_progress"{
+		if alldata[i].Status == "in_progress"{
 			fmt.Println(alldata[i].Title)
 		}
 	}
