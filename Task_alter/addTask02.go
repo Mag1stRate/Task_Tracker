@@ -10,7 +10,7 @@ import(
 )
 
 func AddTask(){
-	filePaht := "F:/TASK_TRACKER/TASK.json"
+	filePaht := "TASK.json"
 	file, err := os.OpenFile(filePaht, os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
 	if err != nil{
 		fmt.Println("操作出错",err)

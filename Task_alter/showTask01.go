@@ -11,7 +11,7 @@ import(
 
 
 func ShowTask(){
-	filePath := "F:/TASK_TRACKER/TASK.json"
+	filePath := "TASK.json"
 	file, err := os.Open(filePath)
 	if err != nil{
 		fmt.Println("文件打开失败")

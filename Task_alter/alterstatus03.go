@@ -11,7 +11,7 @@ import(
 
 func Alter(){
 	//获取存储的json文件地址
-	filePath := "F:/TASK_TRACKER/TASK.json"
+	filePath := "TASK.json"
 	//以读写方式读取json文件
 	file, err := os.OpenFile(filePath, os.O_RDWR, 0666)
 	if err != nil{
